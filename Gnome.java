@@ -14,9 +14,9 @@ public class Gnome extends Actor {
     
     public void act() {
         if (checkCollision() == false) {
-            move(10);
+            move(1);
             if(atWorldEdge()) {
-                move(-10);
+                move(-1);
                 setRotation(getRotation() + 180);
             }
             if(Greenfoot.getRandomNumber(100) <4 ) {
