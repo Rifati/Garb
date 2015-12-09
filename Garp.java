@@ -28,6 +28,7 @@ public class Garp extends Actor
                 diamond = getOneObjectAtOffset(0, 0, diamonds.class);
                 checkExploded();
                 if(diamond != null) { //Als Garp een diamant ziet
+                   getWorld().getObjects(GemScore.class).get(0).updateScore();
                     getWorld().removeObject(diamond); //Verwijder de diamant van de wereld
                 }   
                 {if(Greenfoot.isKeyDown("right")) {
@@ -72,8 +73,12 @@ public class Garp extends Actor
        public boolean checkdeath() {
         Actor gnome = getOneObjectAtOffset(0, 0, Gnome.class);
         if(gnome != null) {
-            getWorld().removeObject(this);
+            //getWorld().removeObject(this);
+            setImage(noImg);
+            Greenfoot.playSound("scream.mp3");
+            isDead = true;
             return true;
+           
         }
         else {return false;}
     }
@@ -86,5 +91,8 @@ public class Garp extends Actor
             isDead = true;
         }
         
+}
+public boolean isDead() {
+    return isDead;
 }
     }

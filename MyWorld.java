@@ -25,8 +25,10 @@ public void stopped()
     {    
         // Create a new world with 700x500 cells with a cell size of 1x1 pixels.
         super(700, 500, 1); 
+        addObject(new GameOverWindow(), getWidth()/2, getHeight()/2);
         addObject(new Garp(), 50, 50);
-        addObject(new Gnome(), 350, 250);       
+        addObject(new Gnome(), 350, 250); 
+        addObject(new GemScore(), 55, getHeight()-10);
         for(int teller = 0; teller < 10; teller ++) {
 addObject(new diamonds(), Greenfoot.getRandomNumber(700), 
 Greenfoot.getRandomNumber(500));
@@ -39,5 +41,12 @@ Greenfoot.getRandomNumber(500));
 addObject(new Bomb(), Greenfoot.getRandomNumber(700), 
 Greenfoot.getRandomNumber(500));
 }
+ setPaintOrder(
+            GemScore.class,
+            GameOverWindow.class,
+            Explosion.class,
+            Garp.class, Gnome.class,
+            diamonds.class, Bomb.class, Rock.class
+        );
     }
 }
